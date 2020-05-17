@@ -8,13 +8,14 @@ from tqdm import tqdm
 import pickle
 import getpass
 
+unique_id = input("Your unique id:")
 username = input("Facebook username:")
 password = getpass.getpass('Password:')
 
 chrome_options = webdriver.ChromeOptions()
 prefs = {"profile.default_content_setting_values.notifications" : 2}
 chrome_options.add_experimental_option("prefs",prefs)
-driver = webdriver.Chrome(chrome_options=chrome_options)
+driver = webdriver.Chrome(chrome_options = chrome_options)
 
 driver.get('http://www.facebook.com/')
 
@@ -80,7 +81,7 @@ class MyHTMLParser(HTMLParser):
                             self.urls.append(value)
 
 
-my_url = 'http://www.facebook.com/' + username + '/friends'
+my_url = 'http://www.facebook.com/' + unique_id + '/friends'
 
 UNIQ_FILENAME = 'uniq_urls.pickle'
 if os.path.isfile(UNIQ_FILENAME):
